@@ -2,19 +2,29 @@
 ### Thread Control Block (TCB):
 
 The TCB is defined in our header file containing thefollowing attributes:
+
 ● A unique thread identifier which we called **tid**
+
 ● An integer named **state** that will switch between RUNNING(0), SCHEDULED (1), and
 BLOCKED (2)
+
 ● A ucontext_t named **context** that is used to store thethread’s context
+
 ● A void pointer to the threads stack, named **stack**
+
 ● An integer named **priority** that will distinguish whichqueue this thread belongs to when
 running MLFQ.
+
 ● A TCB pointer named **joined** that allows us to trackwhich thread has called join on this
 thread.
+
 ● An integer **j** used to distinguish if this thread hascalled rpthread_join on another thread
 and is waiting for it to finish.
+
 ● A TCB pointer **next** that is used to form a linkedlist of nodes that will represent the
 queue.
+
+
 All of these values are set in our methods **tcb_create** and **rpthread_create**. The reason for
 creating two different functions for creating a threadis to allow our main thread to be created in
 a manner that allows for more control of its attributes.
